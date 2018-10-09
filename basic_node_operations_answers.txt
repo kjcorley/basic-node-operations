@@ -1,0 +1,26 @@
+>1. Run the commands sort, wc and uniq on the commands.js file. Explain how they work and what the output was.
+
+The `sort` command works by splitting the file contents by new line characters, sorting the lines alphabetically, and returning each of the lines joined by a new line character.  The sort command outputted all lines in commands.js, sorted alphabetically.
+
+The `wc` command works by splitting the file contents by new line characters ("\n"), by spaces (" "), and between each character ("") and returns the sum of each of these, which are the number of lines, words, and characters, respectively.  The command output the number of lines, words, and characters in the commands.js file.
+
+The `uniq` function worlks by checking if each line is the same as the previous line, and if so removes it.  Used directly on commands.js it returns the exact contents of the file because no two adjacent lines are the same.  To return only unique line in the file, it must first be sorted using the sort command.
+
+>2. Using the pipe (|) connect at least two commands and run it on commands.js. Explain what the output was and why the specific data was outputted.
+
+`sort commands.js | uniq` returned an alphabetical list of all lines that are unique within the files.  The sort command was executed first which enabled the uniq command to filter out the duplicate lines.
+
+>6. Given a string, reverse the order of characters in each word within a sentence while maintaining the original word order and whitespace and return the string. To improve your problem-solving experience, use the suggested functions to solve the problem.
+
+function reverseString(inputString) {
+    var splitSentence = inputString.split(" ");
+    var reversedCollector = new Array();
+    splitSentence.forEach((currentItem) => {
+        var splitWord = currentItem.split("");
+        splitWord.reverse()
+        var reversedWord = splitWord.join("");
+        reversedCollector.push(reversedWord);
+    })
+    var outputString = reversedCollector.join(" ");
+    return outputString;
+}
